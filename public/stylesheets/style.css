@@ -1,0 +1,19 @@
+body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 5rem;
+}
+form {
+  display: grid;
+  width: max-content;
+  justify-items: end;
+}
+form button {
+  margin-top: 1.5rem;
+  padding: 0.2rem;
+  width: 6rem;
+  background-color: rgb(155, 155, 255);
+  border: 1px solid blue;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= finish.finishing %> <%= finish.cosmetic %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <aside>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/players">All players</a>
+        </li>
+        <li>
+          <a href="/finishes">All finishes</a>
+        </li>
+        <br />
+        <li>
+          <a href="/players/create">Create player</a>
+        </li>
+      </ul>
+    </aside>
+    <main>
+      <h1><%= finish.finishing %> <%= finish.cosmetic %></h1>
+      <% if (finish.players.length) { %>
+      <h2>Players (<%= finish.players.length %>)</h2>
+      <ul>
+        <% finish.players.map((player) => { %>
+        <li>
+          <a href="/players/<%= player._id %>"><%= player.username %></a>
+        </li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <p><%= finish.finishing %> <%= finish.cosmetic %> has no players</p>
+      <% }; %>
+    </main>
+  </body>
+</html>

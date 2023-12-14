@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create player</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <aside>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/players">All players</a>
+        </li>
+        <li>
+          <a href="/finishes">All finishes</a>
+        </li>
+        <br />
+        <li>
+          <a href="/players/create">Create player</a>
+        </li>
+      </ul>
+    </aside>
+    <main>
+      <h1>Create player</h1>
+      <form method="post">
+        <div>
+          <label>
+            * Username:
+            <input
+              type="text"
+              name="username"
+              value="<%= player === undefined ? `` : player.username %>"
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Discord:
+            <input
+              type="text"
+              name="discord"
+              value="<%= player === undefined ? `` : player.discord %>"
+            />
+          </label>
+        </div>
+        <h3>Finishes</h3>
+        <% finishes.map((finish) => { %>
+        <div>
+          <% if (finish.checked) { %>
+          <label>
+            <%= finish.finishing %> <%= finish.cosmetic %>
+            <input type="checkbox" name="finishes" value="<%= finish._id %>" checked />
+          </label>
+          <% } else { %>
+          <label>
+            <%= finish.finishing %> <%= finish.cosmetic %>
+            <input type="checkbox" name="finishes" value="<%= finish._id %>" />
+          </label>
+          <% }; %>
+        </div>
+        <% }); %>
+        <button>Submit</button>
+        <ul>
+          <% errors.map((error) => { %>
+          <li><%= error.msg %></li>
+          <% }); %>
+        </ul>
+      </form>
+    </main>
+  </body>
+</html>

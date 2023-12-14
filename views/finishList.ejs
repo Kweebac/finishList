@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finishes</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <aside>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/players">All players</a>
+        </li>
+        <li>
+          <a href="/finishes">All finishes</a>
+        </li>
+        <br />
+        <li>
+          <a href="/players/create">Create player</a>
+        </li>
+      </ul>
+    </aside>
+    <main>
+      <h1>Finishes</h1>
+      <% if (finishes.length) { finishes.map((finish) => { %>
+      <div>
+        <a href="/finishes/<%= finish._id %>"
+          ><%= finish.finishing %> <%= finish.cosmetic %></a
+        >
+        (<%= finish.length %> <%= finish.length === 1 ? "player" : "players" %>)
+      </div>
+      <% })} else { %>
+      <div>There are no finishes</div>
+      <% }; %>
+    </main>
+  </body>
+</html>
