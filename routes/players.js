@@ -91,6 +91,12 @@ router.post("/create", [
           });
         } else {
           player.save();
+          for (const playerFinish of player.finishes) {
+            await Finish.findByIdAndUpdate(playerFinish, {
+              $push: { players: player._id },
+            });
+          }
+
           res.redirect(`/players/${player._id}`);
         }
       } else {
